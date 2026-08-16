@@ -255,9 +255,78 @@ print(count_greater([3, 7, 3, 2, 7, 3, 9, 3], 5))
 # Expected:
 # [5, 4, 3, 2, 1]
 #
-# We have NOT solved this yet.
-#
-# Idea we came up with:
-# Think of the numbers as cards and take the cards
-# from the right side one by one into a new list.
 
+numbers = [1, 2, 3, 4, 5, 6, 7]
+
+def reverse_array(nums):
+    left = 0
+    right = len(nums)-1
+    while left < right:
+        nums[left],nums[right] = nums[right],nums[left]
+        left += 1
+        right -= 1
+    return nums
+
+
+print(reverse_array(numbers))
+
+# ==================================================
+# 8. CHECK IF ARRAY IS PALINDROME
+# ==================================================
+
+# Check if an array reads the same from both sides.
+
+# Example:
+# [1, 2, 3, 2, 1] → True
+# [1, 2, 3, 4, 5] → False
+
+# Pattern:
+# Two Pointers.
+
+# Time Complexity: O(n)
+# Space Complexity: O(1)
+
+numbers = [1, 2, 4, 3, 4, 1, 1]
+
+def is_palindrome(nums):
+    left = 0
+    right = len(nums)-1
+    while left < right:
+        if nums[left] != nums[right]:
+            return False
+        left += 1
+        right -= 1
+    return True
+
+
+print(is_palindrome(numbers))
+
+# ==================================================
+# 9. REMOVE DUPLICATES FROM SORTED ARRAY
+# ==================================================
+
+# Remove duplicates from a sorted array using two pointers.
+# Keep only unique elements in the beginning of the array.
+
+# Example:
+# [1, 1, 2, 2, 3, 3, 4] → [1, 2, 3, 4]
+
+# Pattern:
+# Two Pointers.
+
+# Time Complexity: O(n)
+# Space Complexity: O(1)
+
+numbers = [1, 1, 2, 2, 3, 3, 4]
+
+def remove_duplicates(nums):
+    unique = 0
+
+    for scan in range(1,len(numbers)):
+        if nums[unique] != nums[scan]:
+            nums[unique] = nums[scan]
+            unique += 1
+
+    return nums[:unique+1]
+
+print(remove_duplicates(numbers))
